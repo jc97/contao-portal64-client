@@ -1,0 +1,72 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php System::loadLanguageFile('tl_portal64_team'); ?>
+
+<?php /* Class ce_tresults is for backward compatiblity */ ?>
+<table class="ce_tresults ce_team_results<?= $this->ContentElement['showGameResults'] ? ' show-game-results' : '' ?><?= $this->ContentElement['showSingleRound'] ? ' show-single-round' : '' ?>">
+	<thead>
+	<tr>
+		<th class="round"> &nbsp; </th>
+		<th class="team-home" colspan="2"><?= $GLOBALS['TL_LANG']['MSC']['portal64_hometeam'] ?></th>
+		<th class="t-seperator"> - </th>
+		<th class="team-guest" colspan="2"><?= $GLOBALS['TL_LANG']['MSC']['portal64_guesteam'] ?></th>
+		<th class="team-result-home"> &nbsp; </th>
+		<th class="t-seperator"> - </th>
+		<th class="team-result-guest"> &nbsp; </th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php $tr_even = true; ?>
+	<?php foreach ($this->rounds as $R): ?>
+	<?php $tr_even = !$tr_even; ?>
+	<tr class="team-round <?= $tr_even ? 'even' : 'odd' ?> <?= $R['isHome'] ? 'home' : 'guest' ?> <?= $R['_hasResults'] ? 'has-results' : 'no-results' ?>">
+		<td class="round"><?= $R['round'] ?></td>
+		<td class="team-home round-teams" colspan="2"><?= $R['_homeTeam'] ?></td>
+		<td class="t-seperator round-teams"> - </td>
+		<td class="team-guest round-teams" colspan="2"><?= $R['_guestTeam'] ?></td>
+		<td class="team-result-home team-result team-result-value"><?= $R['_hasResults'] ? $R['_homePoints'] : '&nbsp;' ?></td>
+		<td class="t-seperator team-result"> - </td>
+		<td class="team-result-guest team-result team-result-value"><?= $R['_hasResults'] ? $R['_guestPoints'] : '&nbsp;' ?></td>
+	</tr>
+	<?php if ($this->ContentElement['showGameResults']): ?>
+		<?php $tr_even_match = true; ?>
+		<?php foreach ($R['_matches'] as $M): ?>
+			<?php $tr_even_match = false; ?>
+			<tr class="match<?= $tr_even_match ? 'even' : 'odd' ?> round-<?= $R['round'] ?>">
+				<td class="match-position"><?= $M['position'] ?>.</td>
+				<td class="home-rank rank paring paring-home"><?= $M['homeRank'] > 0 ? $M['homeRank'] : '&nbsp;' ?></td>
+				<td class="home-player player paring paring-home"><?= $M['_homeName'] ?></td>
+				<td class="t-seperator paring"> - </td>
+				<td class="guest-rank rank paring paring-guest"><?= $M['guestRank'] > 0 ? $M['guestRank'] : '&nbsp;' ?></td>
+				<td class="guest-player player paring paring-guest"><?= $M['_guestName'] ?></td>
+				<td class="home-result pairing-result pairing-result-value"><?= $M['resultHome'] ?></td>
+				<td class="t-seperator pairing-result"> - </td>
+				<td class="guest-result pairing-result pairing-result-value"><?= $M['resultGuest'] ?></td>
+			</tr>
+		<?php endforeach; ?>
+	<?php endif; ?>
+	<?php endforeach; ?>
+	</tbody>
+</table>
+
+<?php if ($this->ContentElement['showTeamster']): ?>
+	<span class="teamster-container">
+		<span class="teamster-description"><?= $GLOBALS['TL_LANG']['tl_portal64_team']['teamster'][0] ?>: </span>
+		<span class="teamster"><?= $this->team['teamster'] ?></span>
+		<?php if ($this->ContentElement['showTeamsterMail']): ?>
+			<?php if (isset($this->arrTeamster['email']) && strlen($this->arrTeamster['email']) > 0): ?>
+				<span class="teamster-email-container">, <span class="teamster-email"><?= $this->replaceInsertTags("{{email::".$this->arrTeamster['email']."}}") ?></span></span>
+			<?php endif; ?>
+		<?php endif; ?>
+	</span>
+<?php endif; ?>
+
+<?php if ($this->ContentElement['linkToPortal']): ?>
+	<span class="linkToPortal64">
+		<a class="linkToPortal64" href="<?= $this->linkToPortal ?>" target="_blank"><?= $GLOBALS['TL_LANG']['MSC']['portal64_portalLink'] ?></a>
+	</span>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>

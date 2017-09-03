@@ -1,0 +1,72 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php System::loadLanguageFile('tl_portal64_team'); ?>
+
+<table class="ceteam<?= $this->ContentElement['showGameResults'] ? ' show-game-results' : '' ?>">
+	<thead>
+	<tr>
+		<th><?= $GLOBALS['TL_LANG']['MSC']['portal64_rank'] ?></th>
+		<?php if ($this->ContentElement['displayFIDEData']): ?>
+			<th><?= $GLOBALS['TL_LANG']['MSC']['portal64_title'] ?></th>
+		<?php endif; ?>
+		<th><?= $GLOBALS['TL_LANG']['MSC']['portal64_lastName'] ?></th>
+		<th><?= $GLOBALS['TL_LANG']['MSC']['portal64_firstName'] ?></th>
+		<?php if ($this->ContentElement['displayFIDEData']): ?>
+			<th><?= $GLOBALS['TL_LANG']['MSC']['portal64_ELO'] ?></th>
+		<?php endif; ?>
+		<th><?= $GLOBALS['TL_LANG']['MSC']['portal64_DWZ'] ?></th>
+		<?php if ($this->ContentElement['showGameResults']): ?>
+			<?php for($i=1;$i<=count($this->rounds);$i++): ?>
+				<th class="round round<?= $i ?>"><?= $i ?></th>
+			<?php endfor; ?>
+		<?php endif; ?>
+	</tr>
+	</thead>
+	<tbody>
+	<?php $tr_even = false; ?>
+	<?php foreach ($this->players as $P): ?>
+	<?php $tr_even = !$tr_even; ?>
+		<tr class="<?= $tr_even ? 'even' : 'odd' ?> <?= $P['_regular'] ? 'regular-player' : 'substitute-player' ?>">
+			<td><?= $P['rank'] ?></td>
+			<?php if ($this->ContentElement['displayFIDEData']): ?>
+				<td><?= $P['_dwz']['title'] ?></td>
+			<?php endif; ?>
+			<td><?= $P['_name']['lastname'] ?></td>
+			<td><?= $P['_name']['firstname'] ?></td>
+			<?php if ($this->ContentElement['displayFIDEData']): ?>
+				<td><?= $P['elo'] ?></td>
+			<?php endif; ?>
+			<td><?= $P['dwz'] ?></td>
+			<?php if ($this->ContentElement['showGameResults']): ?>
+				<?php for($i=1;$i<=count($this->rounds);$i++): ?>
+					<td class="round round<?= $i ?>">
+						<?= isset($P['_round_matches'][$i]) ? $P['_round_matches'][$i]['_ownResult'] : "&nbsp;" ?>
+					</td>
+				<?php endfor; ?>
+			<?php endif; ?>
+		</tr>
+	<?php endforeach; ?>
+	</tbody>
+</table>
+
+<?php if ($this->ContentElement['showTeamster']): ?>
+	<span class="teamster-container">
+		<span class="teamster-description"><?= $GLOBALS['TL_LANG']['tl_portal64_team']['teamster'][0] ?>: </span>
+		<span class="teamster"><?= $this->team['teamster'] ?></span>
+		<?php if ($this->ContentElement['showTeamsterMail']): ?>
+			<?php if (isset($this->arrTeamster['email']) && strlen($this->arrTeamster['email']) > 0): ?>
+				<span class="teamster-email-container">, <span class="teamster-email"><?= $this->replaceInsertTags("{{email::".$this->arrTeamster['email']."}}") ?></span></span>
+			<?php endif; ?>
+		<?php endif; ?>
+	</span>
+<?php endif; ?>
+
+<?php if ($this->ContentElement['linkToPortal']): ?>
+	<span class="linkToPortal64">
+		<a class="linkToPortal64" href="<?= $this->linkToPortal ?>" target="_blank"><?= $GLOBALS['TL_LANG']['MSC']['portal64_portalLink'] ?></a>
+	</span>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>
