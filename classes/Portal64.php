@@ -321,10 +321,10 @@ class Portal64 extends \System
 	 * This function queries the following metadata of the team:
 	 * Official name of team, league of team, vkz of team's club, teamster
 	 *
-	 * @param int  $term        The term of the team
-	 * @param int  $tid         The id of the tournament of the team
-	 * @param int|null (optional) $lotNumber The lot number of the team or null to get data of all teams
-	 * @param bool $bypassCache (optional) Bypass the cache (runtime)
+	 * @param int      $term        The term of the team
+	 * @param int      $tid         The id of the tournament of the team
+	 * @param int|null $lotNumber   (optional) The lot number of the team or null to get data of all teams
+	 * @param bool     $bypassCache (optional) Bypass the cache (runtime)
 	 *
 	 * @return array|bool The metadata of the team or false on error
 	 */
