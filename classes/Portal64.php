@@ -43,7 +43,7 @@ class Portal64 extends \System
 	protected $xmlCache = [];
 	
 	/**
-	 * Import the database object and config libxml
+	 * Configure the libxml class and check the configuration of this extension
 	 */
 	public function __construct()
 	{
