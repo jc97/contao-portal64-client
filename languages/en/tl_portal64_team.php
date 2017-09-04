@@ -23,11 +23,11 @@ $GLOBALS['TL_LANG']['tl_portal64_team']['portal64_legend'] = "Portal64.de";
 $GLOBALS['TL_LANG']['tl_portal64_team']['calendar_legend'] = "Calendar";
 $GLOBALS['TL_LANG']['tl_portal64_team']['meta_legend'] = "Meta data";
 
-$GLOBALS['TL_LANG']['tl_portal64_team']['officialName'] = array("Official name", "Official name of team, loaded from team management system");
+$GLOBALS['TL_LANG']['tl_portal64_team']['officialName'] = array("Official name", "Official name of team, loaded from league management system");
 $GLOBALS['TL_LANG']['tl_portal64_team']['internalName'] = array("Internal name", "Internal name of team");
-$GLOBALS['TL_LANG']['tl_portal64_team']['league'] = array("League", "Loaded from team management system");
-$GLOBALS['TL_LANG']['tl_portal64_team']['tid'] = array("Tournament id (tid)", "Can be determined from URLs to the team management system: (https://domain.of.portal/ergebnisse/show/2013/123/ => tournament id 123)");
-$GLOBALS['TL_LANG']['tl_portal64_team']['lotNumber'] = array("Lot number", "The lot number of the team can be determined from the overview of all teams in the team management system");
+$GLOBALS['TL_LANG']['tl_portal64_team']['league'] = array("League", "Loaded from league management system");
+$GLOBALS['TL_LANG']['tl_portal64_team']['tid'] = array("Tournament id (tid)", "Can be determined from URLs to the league management system: (https://domain.of.portal/ergebnisse/show/2013/123/ => tournament id 123)");
+$GLOBALS['TL_LANG']['tl_portal64_team']['lotNumber'] = array("Lot number", "The lot number of the team can be determined from the overview of all teams in the league management system");
 $GLOBALS['TL_LANG']['tl_portal64_team']['lastUpdate'] = array("Last update", "The time of the last automatically update");
 $GLOBALS['TL_LANG']['tl_portal64_team']['loadPlayersOfOpponentTeams'] = array("Save opponent players", "Indicates whether the data of players of opponent team should be saved in the database to make them useble for other extensions");
 $GLOBALS['TL_LANG']['tl_portal64_team']['vkz'] = array("VKZ (Vereinskennziffer)", "Will be automatically determined");
@@ -39,7 +39,7 @@ $GLOBALS['TL_LANG']['tl_portal64_team']['calendar'] = array("Calendar", "The cal
 $GLOBALS['TL_LANG']['tl_portal64_team']['eventTitle'] = array("Title of events", "The title of the events to create, therefor wildcards can be used (including _R_ = Round, _H_ = Home team, _G_ = Guest team, ... see documentation)");
 $GLOBALS['TL_LANG']['tl_portal64_team']['eventAuthor'] = array("Author", "This user will be set as author of the created events");
 $GLOBALS['TL_LANG']['tl_portal64_team']['eventDuration'] = array("Duration", "The duration of the events to create (in hours)");
-$GLOBALS['TL_LANG']['tl_portal64_team']['homeLocation'] = array("Location of home matches", "The location determined from the team management system will be used if this option is empty");
+$GLOBALS['TL_LANG']['tl_portal64_team']['homeLocation'] = array("Location of home matches", "The location determined from the league management system will be used if this option is empty");
 
 $GLOBALS['TL_LANG']['tl_portal64_team']['mail'] = array("E-Mail", "Send an e-mail to all players of the team");
 
