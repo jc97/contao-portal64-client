@@ -5,10 +5,10 @@
  *
  * Copyright (C) 2017 Julian Knorr
  *
- * @package			Portal64.de Client
- * @author			Julian Knorr
- * @copytight		Copyright (C) 2017 Julian Knorr
- * @date			2017
+ * @package            Portal64.de Client
+ * @author             Julian Knorr
+ * @copytight          Copyright (C) 2017 Julian Knorr
+ * @date               2017
  */
 
 /*
@@ -25,6 +25,7 @@ $GLOBALS['TL_CTE']['texts']['teamheadline'] = 'ContentTeamHeadline';
 $GLOBALS['BE_MOD']['content']['portal64'] = array(
 	'tables'         => array('tl_portal64_term', 'tl_portal64_team', 'tl_portal64_team_player', 'tl_portal64_team_round', 'tl_portal64_team_round_match'),
 	'portal64update' => array('Portal64\Portal64Manager', 'updateAllTeamsFromBackend'),
+	'icon'           => 'system/themes/default/images/mgroup.gif',
 );
 
 /*
