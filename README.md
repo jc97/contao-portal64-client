@@ -1,4 +1,4 @@
-# Contao client for Portal64.de
+# Contao client for Portal64.de (chess league management system in Germany)
 
 ## Synopsis
 
