@@ -180,13 +180,19 @@ class Portal64Manager extends \System
 		$collectionTeams = Portal64TeamModel::findByPid($objTerm->id);
 		if ($collectionTeams === null) $this->returnInBackend();
 		$numberOfTeams = $collectionTeams->count();
+		$offset = intval(\Input::get('offset'));
 		if ($index < $numberOfTeams) {
 			if ($index > 0) sleep(self::sleepDelay);
-			$this->updateNextTeam($objTerm->id);
+			$success = $this->updateNextTeam($objTerm->id, false, $offset);
 			$url = \Environment::get('request');
 			if (preg_match('/[\?&]index=\d+/', $url)) {
 				$url = preg_replace('/([\?&])index=\d+/', '${1}index='.($index + 1), $url);
 			} else $url .= '&index='.($index + 1);
+			if (!$success) {
+				if (preg_match('/[\?&]offset=\d+/', $url)) {
+					$url = preg_replace('/([\?&])offset=\d+/', '${1}offset='.($offset + 1), $url);
+				} else $url .= '&offset='.($offset + 1);
+			}
 			$this->redirect($url);
 			die();
 		}
@@ -205,6 +211,8 @@ class Portal64Manager extends \System
 		$url = preg_replace('/\?index=\d+/', '', $url);
 		$url = preg_replace('/&term=\d+/', '', $url);
 		$url = preg_replace('/\?term=\d+/', '', $url);
+		$url = preg_replace('/&offset=\d+/', '', $url);
+		$url = preg_replace('/\?offset=\d+/', '', $url);
 		$this->redirect($url);
 		die();
 	}
@@ -214,21 +222,27 @@ class Portal64Manager extends \System
 	 *
 	 * @param int  $termId (optional) The id of the term
 	 * @param bool $cron   (optional) Indicates whether the update is started by a cronjob (default false).
+	 * @param int  $offset (optional) Team offset
 	 *
 	 * @return bool Indicates whether the update was successfully completed
 	 */
-	public function updateNextTeam($termId = null, $cron = false)
+	public function updateNextTeam($termId = null, $cron = false, $offset = 0)
 	{
 		if ($termId === null) $objTerm = Portal64TermModel::findLatest();
 		else $objTerm = Portal64TermModel::findById($termId);
 		if ($objTerm === null) return false;
-		$objTeam = Portal64TeamModel::findMostOutdatedByTerm($objTerm->id);
+		$objTeam = Portal64TeamModel::findMostOutdatedByTerm($objTerm->id, ['offset' => $offset]);
 		if ($objTeam === null) return false;
-		if ($this->updateTeam($objTeam->id)) {
-			$this->log('Update of team '.$objTeam->internalName.' ('.$objTeam->id.') was successfully completed.', __METHOD__, $cron ? TL_CRON : TL_GENERAL);
-			return true;
-		} else {
-			$this->log('Update of team '.$objTeam->internalName.' ('.$objTeam->id.') failed'.($cron ? ' (executed by cronjob' : ''), __METHOD__, TL_ERROR);
+		try {
+			if ($this->updateTeam($objTeam->id)) {
+				$this->log('Update of team '.$objTeam->internalName.' ('.$objTeam->id.') was successfully completed.', __METHOD__, $cron ? TL_CRON : TL_GENERAL);
+				return true;
+			} else {
+				$this->log('Update of team '.$objTeam->internalName.' ('.$objTeam->id.') failed'.($cron ? ' (executed by cronjob)' : ''), __METHOD__, TL_ERROR);
+				return false;
+			}
+		} catch (\Exception $exception) {
+			$this->log('Update of team '.$objTeam->internalName.' ('.$objTeam->id.') failed with an exception'.($cron ? ' (executed by cronjob)' : '').'. Exception: '.$exception->getMessage(), __METHOD__, TL_ERROR);
 			return false;
 		}
 	}
