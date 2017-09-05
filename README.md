@@ -6,7 +6,7 @@ This is an extension for the Contao Open Source CMS.
 It allows importing teams from the chess league management system "portal64" (see http://portal64.de/ (german)) into Contao. 
 The events (rounds) of the team can thereby be imported into the calendar of Contao.
 The line-ups and scores of teams can be included in front end by using the provided content elements.
-This extension allows automatically updating the teams using Contao's cron jobs.    
+This extension allows automatically updating the teams using the cron jobs of Contao.    
 
 ## Motivation
 
@@ -19,14 +19,14 @@ In addition automatically importing the events of teams in different calendars i
 This extension was developed and tested for Contao 3.5.x.
 Probably it is possible to install it under Contao 4 too.
 
-Furthermore this extension depends on Contao's calendar extension.
+Furthermore this extension depends on the calendar extension for Contao.
 
 Features according to the determination of player's ELO values and FIDE titles depend on the Contao extension "dwz", developed by the author of this extension.  
 
 ## Installation
 
 To install this extension copy it's file to `system/modules/portal64.de_client/`. 
-After that you have to run Contao's database update. 
+After that you have to run database update in Contao. 
 
 ## Configuration and use
 
@@ -54,6 +54,6 @@ The following wildcards are supported for headlines and titles of events:
 
 \* available for events only
 
-## Contributors
+## Troubleshooting
 
 Directly here on GitHub.
