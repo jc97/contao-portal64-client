@@ -21,7 +21,9 @@ Probably it is possible to install it under Contao 4 too.
 
 Furthermore this extension depends on the calendar extension for Contao.
 
-Features according to the determination of player's ELO values and FIDE titles depend on the Contao extension "dwz", developed by the author of this extension.  
+Features according to the determination of player's ELO values and FIDE titles depend on the Contao extension "dwz", developed by the author of this extension.
+
+This extension supports english and german language in back end and front end.  
 
 ## Installation
 
