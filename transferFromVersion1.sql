@@ -8,7 +8,7 @@
 --
 -- Execute this statements BEFORE executing the internal updates in contao.
 
--- table tl_portal64_team
+-- table tl_portal64_term
 ALTER TABLE `tl_portal64_terms` TO `tl_portal64_term`;
 
 -- table tl_portal64_team
