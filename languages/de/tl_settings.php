@@ -12,6 +12,8 @@
  */
 
 $GLOBALS['TL_LANG']['tl_settings']['portal64_legend'] = 'Portal64.de';
+
 $GLOBALS['TL_LANG']['tl_settings']['portal64Link'] = array("Link zum Mannschaftsportal portal64.de");
+$GLOBALS['TL_LANG']['tl_settings']['portal64DisableCron'] = array("Deaktiviere Updates durch Cronjobs", "Wird diese Option aktiviert, werden Mannschaften nicht mehr durch Cronjobs aktualisiert");
 
 ?>

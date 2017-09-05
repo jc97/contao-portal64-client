@@ -25,8 +25,10 @@ class Portal64Automator extends \System
 	 */
 	public function updateFromPortal64()
 	{
-		$manager = new Portal64Manager();
-		$manager->updateNextTeam(null, true);
+		if (!$GLOBALS['TL_CONFIG']['portal64DisableCron']) {
+			$manager = new Portal64Manager();
+			$manager->updateNextTeam(null, true);
+		}
 	}
 }
 
