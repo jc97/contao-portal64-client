@@ -30,8 +30,8 @@ After that you have to run Contao's database update.
 
 ## Configuration and use
 
-Configure this extension by setting the URL to the team management system in the settings of Contao.
-The url normally only consist of the domain and protocol (http / https).
+Configure this extension by setting the URL to the start page of the league management system in the settings of Contao.
+This url normally only consist of the domain and protocol (http / https).
 
 After that you can add terms and teams using the menu "teams" and publish data using the content elements.  
 
