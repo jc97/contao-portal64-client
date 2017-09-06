@@ -1,5 +1,7 @@
 # Contao client for Portal64.de (chess league management system in Germany)
 
+Developed by Julian Knorr.
+
 ## Synopsis
 
 This is an extension for the Contao Open Source CMS.
