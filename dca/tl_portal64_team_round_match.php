@@ -112,7 +112,7 @@ $GLOBALS['TL_DCA']['tl_portal64_team_round_match'] = array(
 );
 
 /**
- * Reads and writes teams (Portal64)
+ * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Julian Knorr
  */
