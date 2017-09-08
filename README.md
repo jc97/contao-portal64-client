@@ -29,7 +29,7 @@ This extension supports english and german language in back end and front end.
 
 ## Installation
 
-To install this extension copy it's file to `system/modules/portal64.de_client/`. 
+To install this extension copy it's files to `system/modules/portal64.de_client/`. 
 After that you have to run database update in Contao. 
 
 ## Configuration and use
