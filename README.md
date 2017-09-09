@@ -58,6 +58,11 @@ The following wildcards are supported for headlines and titles of events:
 
 \* available for events only
 
+### Custom Templates
+
+This extension is very flexible regarding custom templates.
+All settings of the respective content element, all player data and all data of rounds are provided in variables and arrays for templates. 
+
 ## Troubleshooting
 
 Directly here on GitHub.
