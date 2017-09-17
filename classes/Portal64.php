@@ -85,7 +85,7 @@ class Portal64 extends \System
 	 * Date and Time, opponent and indicates whether the match takes place at home
 	 *
 	 * @param int  $tid         The id of the tournament of the team
-	 * @param int  $lotNumber   The lot number of the team
+	 * @param int  $teamName    The official name of the team
 	 * @param bool $bypassCache (optional) Bypass the cache (runtime)
 	 *
 	 * @return array|bool The rounds or false on error
