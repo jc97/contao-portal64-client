@@ -23,7 +23,7 @@ array_insert($GLOBALS['TL_DCA']['tl_calendar_events']['fields'], 0, array
 		'inputType' => 'checkbox',
 		'search'    => true,
 		'sql'       => "char(1) NOT NULL default ''",
-		'eval'      => array('readonly' => true, 'disabled' => true, "tl_class" => "w50 clr")
+		'eval'      => array('readonly' => true, 'disabled' => true, "tl_class" => "w50 clr", "doNotCopy" => true)
 	),
 	'disableUpdatesByPortal64' => array
 	(
