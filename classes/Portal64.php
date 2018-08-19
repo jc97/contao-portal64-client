@@ -26,7 +26,7 @@ class Portal64 extends \System
 	const titleXPath = '//div[@id="col3_content"]/h2';
 	const titleRegEx = '/^\s*(\w[\wÄÖÜäöüß\., -]+): Übersicht über Mannschaften/';
 	const teamHeaderXPath = '//div[@id="col3_content"]/h3';
-	const teamHeaderRegEx = '/^\s*Losnr.: (\d+): ([\wÄÖÜäöüß]+[\wÄÖÜäöüß \/-]*)[^\w ]+ VKZ: (\d+)\s*/';
+	const teamHeaderRegEx = '/^\s*Losnr.: (\d+): ([\wÄÖÜäöüß]+[\wÄÖÜäöüß \/\.-]*)[^\w ]+ VKZ: (\d+)\s*/';
 	
 	/**
 	 * Cache at runtime for html data
