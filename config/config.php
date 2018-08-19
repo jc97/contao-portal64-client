@@ -3,12 +3,12 @@
  * Portal64.de Client
  * Extension for Contao Open Source CMS, Copyright (C) Leo Feyer
  *
- * Copyright (C) 2017 Julian Knorr
+ * Copyright (C) 2018 Julian Knorr
  *
- * @package            Portal64.de Client
- * @author             Julian Knorr
- * @copytight          Copyright (C) 2017 Julian Knorr
- * @date               2017
+ * @package			Portal64.de Client
+ * @author			Julian Knorr
+ * @copyright		Copyright (C) 2018 Julian Knorr
+ * @date			2018
  */
 
 /*
