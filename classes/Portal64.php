@@ -446,7 +446,10 @@ class Portal64 extends \System
 			return false;
 		}
 		if (is_array($checkOptions)) {
-			if (!$this->checkDocument($Html, $checkOptions)) return false;
+			if (!$this->checkDocument($Html, $checkOptions)) {
+				$this->log("Data from $url is invalid", __METHOD__, TL_ERROR);
+				return false;
+			}
 		}
 		return $Html;
 	}
